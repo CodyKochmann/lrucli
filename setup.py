@@ -1,5 +1,5 @@
 from distutils.core import setup
-import sys, os, setuptools
+from setuptools import find_packages
 
 version = '2020.8.22'
 name = 'lrucli'
@@ -11,7 +11,7 @@ setup(
   name = name,
   version = version,
   packages = packages,
-  install_requires = list(requires()),
+  install_requires = [],
   zip_safe=True,
   description = 'command line interface for pythons lru_cache for more command line fu',
   author = 'Cody Kochmann',
