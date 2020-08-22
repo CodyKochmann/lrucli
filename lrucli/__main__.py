@@ -30,7 +30,7 @@ def main():
     try:
         set(
             map(
-                lru_cache(parser.parse_args().cache)(sys.stdout.write),
+                lru_cache(parser.parse_args().maxsize)(sys.stdout.write),
                 sys.stdin
             )
         )
