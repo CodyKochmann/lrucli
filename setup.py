@@ -1,7 +1,7 @@
 from distutils.core import setup
 from setuptools import find_packages
 
-version = '2020.8.22'
+version = '2020.8.22.1'
 package_name = 'lrucli'
 packages = find_packages()
 
