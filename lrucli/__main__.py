@@ -36,7 +36,7 @@ def main():
         )
     except Exception as e:
         parser.print_help()
-        raise e
+        #raise e
 
 
 if __name__ == '__main__':
