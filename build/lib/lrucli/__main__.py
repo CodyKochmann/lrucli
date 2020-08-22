@@ -12,7 +12,7 @@ you want to see a deduped view of some long input
 stream but don't want to wait for `sort | uniq`.
 '''
 
-DEFAULT_CACHE_SIZE = 0
+DEFAULT_CACHE_SIZE = 4096
 
 
 def main():
@@ -28,17 +28,11 @@ def main():
     )
 
     try:
-        maxsize = parser.parse_args().maxsize
-    except:
-        maxsize = DEFAULT_CACHE_SIZE
-
-    if maxsize <= 0:
-        maxsize = None
-
-    try:
         set(
             map(
-                lru_cache(maxsize=maxsize)(sys.stdout.write),
+                lru_cache(
+                    maxsize=None if parser.parse_args().maxsize == 0 else parser.parse_args().maxsize
+                )(sys.stdout.write),
                 sys.stdin
             )
         )
