@@ -14,23 +14,30 @@ stream but don't want to wait for `sort | uniq`.
 
 DEFAULT_CACHE_SIZE = 4096
 
-parser = ArgumentParser(description=__doc__)
 
-parser.add_argument(
-    '--cache',
-    type=int,
-    default=DEFAULT_CACHE_SIZE,
-    metavar=DEFAULT_CACHE_SIZE,
-    help='how many items to cache'
-)
+def main():
 
-try:
-    set(
-        map(
-            lru_cache(parser.parse_args().cache)(sys.stdout.write),
-            sys.stdin
-        )
+    parser = ArgumentParser(description=__doc__)
+
+    parser.add_argument(
+        '--cache',
+        type=int,
+        default=DEFAULT_CACHE_SIZE,
+        metavar=DEFAULT_CACHE_SIZE,
+        help='how many items to cache'
     )
-except Exception as e:
-    parser.print_help()
-    raise e
+
+    try:
+        set(
+            map(
+                lru_cache(parser.parse_args().cache)(sys.stdout.write),
+                sys.stdin
+            )
+        )
+    except Exception as e:
+        parser.print_help()
+        raise e
+
+
+if __name__ == '__main__':
+    main()
