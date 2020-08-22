@@ -3,7 +3,7 @@ from setuptools import find_packages
 
 version = '2020.8.22'
 package_name = 'lrucli'
-packages = setuptools.find_packages()
+packages = find_packages()
 
 assert package_name in packages, [package_name, packages]  # if package package_name doesnt show up, something is wrong
 
