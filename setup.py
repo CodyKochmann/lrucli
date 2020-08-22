@@ -2,13 +2,13 @@ from distutils.core import setup
 from setuptools import find_packages
 
 version = '2020.8.22'
-name = 'lrucli'
+package_name = 'lrucli'
 packages = setuptools.find_packages()
 
-assert name in packages, [name, packages]  # if package name doesnt show up, something is wrong
+assert package_name in packages, [package_name, packages]  # if package package_name doesnt show up, something is wrong
 
 setup(
-  name = name,
+  name = package_name,
   version = version,
   packages = packages,
   install_requires = [],
