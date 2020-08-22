@@ -28,9 +28,14 @@ def main():
     )
 
     try:
+        maxsize = parser.parse_args().maxsize
+    except:
+        maxsize = DEFAULT_CACHE_SIZE
+
+    try:
         set(
             map(
-                lru_cache(parser.parse_args().maxsize)(sys.stdout.write),
+                lru_cache(maxsize)(sys.stdout.write),
                 sys.stdin
             )
         )
