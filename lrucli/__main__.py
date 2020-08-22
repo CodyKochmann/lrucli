@@ -20,7 +20,7 @@ def main():
     parser = ArgumentParser(description=__doc__)
 
     parser.add_argument(
-        '--cache',
+        '--maxsize',
         type=int,
         default=DEFAULT_CACHE_SIZE,
         metavar=DEFAULT_CACHE_SIZE,
