@@ -23,6 +23,7 @@ setup(
     'console_scripts': [
       'lru = lrucli.__main__:main'
     ]
-  }
+  },
+  python_requires='>=3.2',
   classifiers = []
 )
