@@ -12,7 +12,7 @@ you want to see a deduped view of some long input
 stream but don't want to wait for `sort | uniq`.
 '''
 
-DEFAULT_CACHE_SIZE = 4096
+DEFAULT_CACHE_SIZE = 0
 
 
 def main():
@@ -24,7 +24,7 @@ def main():
         type=int,
         default=DEFAULT_CACHE_SIZE,
         metavar=DEFAULT_CACHE_SIZE,
-        help='how many items to cache'
+        help='how many items to cache (0 is unlimited)'
     )
 
     try:
@@ -32,10 +32,13 @@ def main():
     except:
         maxsize = DEFAULT_CACHE_SIZE
 
+    if maxsize <= 0:
+        maxsize = None
+
     try:
         set(
             map(
-                lru_cache(maxsize)(sys.stdout.write),
+                lru_cache(maxsize=maxsize)(sys.stdout.write),
                 sys.stdin
             )
         )
